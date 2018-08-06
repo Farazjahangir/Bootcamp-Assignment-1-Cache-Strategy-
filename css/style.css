@@ -1,0 +1,11 @@
+header{
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+.text-white{
+    color:white;
+}
+.black th , .black td{
+    border-color: black !important;
+}
