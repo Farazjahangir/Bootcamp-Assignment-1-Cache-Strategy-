@@ -8,12 +8,17 @@ fetch("https://api.github.com/users/izaanjahangir/followers")
     return res.json()
 })
 .then((myRes)=>{
+    if(myRes.length === 0){
+        renderDataOnDom("No Followers" , "No Followers")
+        return false
+    }
     console.log("Data from Api = " , myRes);
     tabelEl.innerHTML = ""
     for(var i =0 ; i < myRes.length; i++){
         renderDataOnDom(myRes[i].login , myRes[i].id)
     }   
 })
+
 
 
 caches.match('https://api.github.com/users/izaanjahangir/followers')
@@ -24,6 +29,10 @@ caches.match('https://api.github.com/users/izaanjahangir/followers')
     return res.json()  
     })
     .then((myData)=>{
+        if(myData.length === 0){
+            renderDataOnDom("No Followers" , "No Followers")
+            return false
+        }    
         console.log("Data From Cache = " , myData);
         tabelEl.innerHTML = ""
         for(var i =0 ; i < myData.length; i++){
