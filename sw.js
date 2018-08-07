@@ -46,7 +46,7 @@ self.addEventListener('activate', function(e) {
             return caches.open("Dynamic")
                 .then(cache => {
                     console.log('Caching new data...')
-                    cache.put(e.request.url,response.clone());
+                    cache.put(e.request,response.clone());
                     return response;
                 })
         })
